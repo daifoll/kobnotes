@@ -2,11 +2,17 @@
   <RouterView />
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
+import { defineComponent } from "vue";
 
+export default defineComponent({
+  setup() {
+      
+  },
+})
 </script>
 
 
-<style scoped>
+<style lang='sass' scoped>
 
 </style>
