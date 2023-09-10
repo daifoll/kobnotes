@@ -6,6 +6,12 @@ const routes = [
       path: '/',
       component: () => import('../components/pages/Home.vue')
     },
+
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'NotFound',
+      component: () => import('../components/BaseComponents/NotFound.vue'),
+    },
 ]
 
 const router = createRouter({

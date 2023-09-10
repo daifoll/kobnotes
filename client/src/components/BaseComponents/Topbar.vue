@@ -1,12 +1,14 @@
 <template>
     <div class="topbar">
         <div class="logo">
-            <BaseImage
-                :src="imageSrc"
-                :width="100"
-                :height="100"
-                alt="Kobnotes logo"
-            />
+            <router-link :to="{ name: 'Home' }">
+                <BaseImage
+                    :src="imageSrc"
+                    :width="100"
+                    :height="100"
+                    alt="Kobnotes logo"
+                />
+            </router-link>
         </div>
     </div>
 </template>
