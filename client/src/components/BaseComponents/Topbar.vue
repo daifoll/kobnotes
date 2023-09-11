@@ -4,8 +4,8 @@
             <router-link :to="{ name: 'Home' }">
                 <BaseImage
                     :src="imageSrc"
-                    :width="100"
-                    :height="100"
+                    :width="60"
+                    :height="60"
                     alt="Kobnotes logo"
                 />
             </router-link>
@@ -16,7 +16,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import BaseImage from './BaseImage.vue';
-import logoSrc from '@/assets/logo.png';
+import logoSrc from '@/assets/logo.jpg';
 
 export default defineComponent({
     setup() {
@@ -30,4 +30,11 @@ export default defineComponent({
 </script>
 
 <style lang="sass" scoped>
+
+.logo
+    display: inline-block
+
+.topbar
+    padding: 2rem
+    border-bottom: 2px solid black
 </style>
