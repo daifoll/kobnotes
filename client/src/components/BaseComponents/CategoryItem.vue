@@ -19,10 +19,12 @@ export default defineComponent({
 
     props: {
         type: String,
+        title: String,
+        dataObj: Object 
 
     },
-    setup() {
-        const data = ref('')
+    setup(props) {
+        const data = ref(props.title)
         const status = ref<'create' | 'saved' | 'edit'>('create')
 
         const onSubmit = () => {
