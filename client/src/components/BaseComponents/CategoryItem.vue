@@ -6,11 +6,12 @@
     <div v-else>
         <span>{{ data }}</span>
         <button @click="onEdit">Редактировать</button>
+        <button @click="$emit('delete', item.id)">Удалить</button>
     </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch } from "vue";
+import { defineComponent, ref } from "vue";
 
 export default defineComponent({
     components: {
@@ -19,30 +20,35 @@ export default defineComponent({
 
     props: {
         type: String,
-        title: String,
-        dataObj: Object 
+        item: Object
 
     },
+
+    emit: ['delete'],
+
     setup(props) {
-        const data = ref(props.title)
+        const data = ref(props.item.title)
         const status = ref<'create' | 'saved' | 'edit'>('create')
 
         const onSubmit = () => {
             status.value = 'saved'
+            console.log(props.item)
         }
 
         const onEdit = () => {
             status.value = 'edit'
         }
-        watch(status, () => {
-            console.log(status.value)
-        })
+
+        // const onDelete = () => {
+        //     console.log(data)
+        // }
 
         return {
             data,
             status,
             onSubmit,
-            onEdit
+            onEdit,
+            // onDelete
         }
     }
 })

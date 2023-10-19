@@ -1,8 +1,8 @@
 <template>
     <div class="home">
         <Topbar/>
-        <div>
-            <CategoryItem v-for="item in data" :key="item.title" :title="item.title"/>
+        <div v-if="data">
+            <CategoryItem v-for="item in data" :key="item.id" :item="item" @delete="onDelete"/>
             <button @click="onCreate">Добавить</button>
         </div>
     </div>
@@ -12,7 +12,6 @@
 import { defineComponent, ref } from 'vue';
 import Topbar from '../BaseComponents/Topbar.vue';
 import CategoryItem from '../BaseComponents/CategoryItem.vue';
-import { watch } from 'fs';
 
 export default defineComponent({
     components: { Topbar, CategoryItem },
@@ -21,14 +20,17 @@ export default defineComponent({
         const data = ref([])
 
         const onCreate = () => {
-            data.value.push({title: ''})
+            data.value.push({id: new Date().getMilliseconds(), title: ''})
         }
 
-        // watch(data, () => {
+        const onDelete = (id) => {
+            data.value = data.value.filter(item => item.id !== id)
+            console.log(id)
+        }
 
-        // })
         return {
             data,
+            onDelete,
             onCreate
         }
     }
