@@ -52,7 +52,6 @@ export default defineComponent({
 
     const onDelete = (id: number) => {
       data.value = data.value.filter((item) => item.id !== id)
-      // console.log(id)
     }
 
     watch(updatingData, () => {
